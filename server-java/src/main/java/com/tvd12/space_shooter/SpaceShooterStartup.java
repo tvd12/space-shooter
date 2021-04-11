@@ -16,7 +16,7 @@ import com.tvd12.ezyfoxserver.support.controller.EzyUserRequestAppSingletonContr
 import com.tvd12.ezyfoxserver.support.entry.EzySimpleAppEntry;
 import com.tvd12.ezyfoxserver.support.entry.EzySimplePluginEntry;
 
-public class SpaceGameStartup {
+public class SpaceShooterStartup {
 
     private static final String ZONE_NAME = "space-shooter";
     private static final String APP_NAME = "space-shooter";

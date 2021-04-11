@@ -6,7 +6,6 @@ using com.tvd12.ezyfoxserver.client.factory;
 using com.tvd12.ezyfoxserver.client.handler;
 using com.tvd12.ezyfoxserver.client.evt;
 using com.tvd12.ezyfoxserver.client.request;
-using UnityEngine;
 
 public delegate void Callback0();
 public delegate void ObjectCallback(EzyObject obj);
