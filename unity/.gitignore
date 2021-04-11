@@ -1,0 +1,13 @@
+.vs/
+*/.vs/
+.meta
+*.meta
+obj/
+bin/
+*/obj/
+*/bin/
+Temp/
+Library/
+*/Library/
+Logs/
+*/Logs/

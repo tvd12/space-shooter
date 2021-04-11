@@ -1,0 +1,8 @@
+database:
+  mongo:
+    uri: mongodb://root:123456@127.0.0.1:27017/space-shooter
+    database: space-shooter
+    collection:
+      naming:
+        case: UNDERSCORE
+        ignored_suffix: Entity
