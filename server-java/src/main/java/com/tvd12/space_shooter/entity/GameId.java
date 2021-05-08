@@ -1,6 +1,6 @@
 package com.tvd12.space_shooter.entity;
 
-import com.tvd12.ezydata.database.annotation.EzyCollectionId;
+import com.tvd12.ezyfox.database.annotation.EzyCollectionId;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

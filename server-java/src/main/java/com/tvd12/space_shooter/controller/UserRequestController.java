@@ -2,9 +2,8 @@ package com.tvd12.space_shooter.controller;
 
 import com.tvd12.ezydata.database.repository.EzyMaxIdRepository;
 import com.tvd12.ezyfox.bean.annotation.EzyAutoBind;
-import com.tvd12.ezyfox.bean.annotation.EzySingleton;
-import com.tvd12.ezyfox.core.annotation.EzyClientRequestController;
-import com.tvd12.ezyfox.core.annotation.EzyRequestHandle;
+import com.tvd12.ezyfox.core.annotation.EzyRequestController;
+import com.tvd12.ezyfox.core.annotation.EzyDoHandle;
 import com.tvd12.ezyfox.util.EzyLoggable;
 import com.tvd12.ezyfoxserver.entity.EzyUser;
 import com.tvd12.ezyfoxserver.support.factory.EzyResponseFactory;
@@ -20,7 +19,7 @@ import lombok.Setter;
 import java.util.List;
 
 @Setter
-@EzyClientRequestController
+@EzyRequestController
 public class UserRequestController extends EzyLoggable {
 
     @EzyAutoBind
@@ -41,7 +40,7 @@ public class UserRequestController extends EzyLoggable {
     @EzyAutoBind
     private EzyMaxIdRepository maxIdRepository;
 
-    @EzyRequestHandle("getGameId")
+    @EzyDoHandle("getGameId")
     public void getGameId(GetGameIdRequest request, EzyUser user) {
         long gameId = maxIdRepository.incrementAndGet(request.getGameName());
         PlayerCurrentGame playerCurrentGame = new PlayerCurrentGame(
@@ -59,7 +58,7 @@ public class UserRequestController extends EzyLoggable {
                 .execute();
     }
 
-    @EzyRequestHandle("startGame")
+    @EzyDoHandle("startGame")
     public void startGame(StartGameRequest request, EzyUser user) {
         gameObjectPositionRepo.deleteByGameAndGameId(
                 request.getGameName(),
@@ -79,7 +78,7 @@ public class UserRequestController extends EzyLoggable {
                 .execute();
     }
 
-    @EzyRequestHandle("finishGame")
+    @EzyDoHandle("finishGame")
     public void finishGame(FinishGameRequest request, EzyUser user) {
         GameId gameId = new GameId(request.getGameName(), request.getGameId());
         GameCurrentState gameCurrentState = gameCurrentStateRepo.findById(gameId);
@@ -89,7 +88,7 @@ public class UserRequestController extends EzyLoggable {
         }
     }
 
-    @EzyRequestHandle("reconnect")
+    @EzyDoHandle("reconnect")
     public void reconnect(ReconnectRequest request, EzyUser user) {
         String game = request.getGameName();
         String player = user.getName();
@@ -124,7 +123,7 @@ public class UserRequestController extends EzyLoggable {
                 .execute();
     }
 
-    @EzyRequestHandle("syncPosition")
+    @EzyDoHandle("syncPosition")
     public void syncPosition(SyncPositionRequest request, EzyUser user) {
         GameObjectPosition gameObjectPosition = new GameObjectPosition(
                 new GameObjectPosition.Id(
@@ -141,7 +140,7 @@ public class UserRequestController extends EzyLoggable {
         gameObjectPositionRepo.save(gameObjectPosition);
     }
 
-    @EzyRequestHandle("updateScore")
+    @EzyDoHandle("updateScore")
     public void updateScore(UpdateScoreRequest request, EzyUser user) {
         LeaderBoard leaderBoard = new LeaderBoard(
                 new LeaderBoard.Id(
@@ -154,7 +153,7 @@ public class UserRequestController extends EzyLoggable {
         leaderBoardRepo.save(leaderBoard);
     }
 
-    @EzyRequestHandle("deleteGameObject")
+    @EzyDoHandle("deleteGameObject")
     public void deleteGameObject(DeleteGameObjectRequest request) {
         gameObjectPositionRepo.delete(new GameObjectPosition.Id(
                 request.getGameName(),

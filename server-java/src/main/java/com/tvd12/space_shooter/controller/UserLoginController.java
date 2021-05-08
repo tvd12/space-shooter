@@ -2,7 +2,7 @@ package com.tvd12.space_shooter.controller;
 
 import com.tvd12.ezyfox.bean.annotation.EzyAutoBind;
 import com.tvd12.ezyfox.bean.annotation.EzySingleton;
-import com.tvd12.ezyfox.core.annotation.EzyServerEventHandler;
+import com.tvd12.ezyfox.core.annotation.EzyEventHandler;
 import com.tvd12.ezyfox.entity.EzyArray;
 import com.tvd12.ezyfox.io.EzyStrings;
 import com.tvd12.ezyfox.sercurity.EzySHA256;
@@ -19,7 +19,7 @@ import lombok.Setter;
 
 @Setter
 @EzySingleton
-@EzyServerEventHandler(EzyEventNames.USER_LOGIN)
+@EzyEventHandler(EzyEventNames.USER_LOGIN)
 public class UserLoginController
 		extends EzyAbstractPluginEventController<EzyUserLoginEvent> {
 
