@@ -1,0 +1,3 @@
+[submodule "csharp-client-sdk"]
+  path = unity/Assets/ezyfox-server-csharp-client
+  url = https://github.com/youngmonkeys/ezyfox-server-csharp-client.git
