@@ -6,6 +6,7 @@ using com.tvd12.ezyfoxserver.client.factory;
 using com.tvd12.ezyfoxserver.client.handler;
 using com.tvd12.ezyfoxserver.client.evt;
 using com.tvd12.ezyfoxserver.client.request;
+using System;
 
 public delegate void Callback0();
 public delegate void ObjectCallback(EzyObject obj);
@@ -132,6 +133,19 @@ public class SocketClientProxy
         appSetup.addDataHandler("getGameId", new GetGameIdResponseHandler());
         appSetup.addDataHandler("startGame", new StartGameResponseHandler());
         appAccessed = false;
+    }
+
+    [Serializable]
+    private sealed class Data
+    {
+        public bool status;
+        public User user;
+    }
+
+    [Serializable]
+    private sealed class User
+    {
+        public long id;
     }
 
     public static SocketClientProxy getInstance()
