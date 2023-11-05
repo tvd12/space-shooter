@@ -6,5 +6,5 @@ import com.tvd12.space_shooter.entity.LeaderBoard;
 
 @EzyRepository
 public interface LeaderBoardRepo
-        extends EzyMongoRepository<LeaderBoard.Id, LeaderBoard> {
+    extends EzyMongoRepository<LeaderBoard.Id, LeaderBoard> {
 }

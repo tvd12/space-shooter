@@ -7,5 +7,5 @@ import com.tvd12.space_shooter.entity.GameId;
 
 @EzyRepository
 public interface GameCurrentStateRepo
-        extends EzyMongoRepository<GameId, GameCurrentState> {
+    extends EzyMongoRepository<GameId, GameCurrentState> {
 }

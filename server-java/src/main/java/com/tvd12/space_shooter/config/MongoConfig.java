@@ -19,8 +19,8 @@ import java.util.Properties;
 @Setter
 @EzyConfigurationBefore
 public class MongoConfig
-        extends EzyLoggable
-        implements EzyPropertiesAware, EzySingletonFactoryAware, EzyBeanConfig {
+    extends EzyLoggable
+    implements EzyPropertiesAware, EzySingletonFactoryAware, EzyBeanConfig {
 
     @EzyProperty("database.mongo.database")
     private String databaseName;
@@ -32,19 +32,20 @@ public class MongoConfig
     public void config() {
         EzyDatabaseContext databaseContext = newMongodbDatabaseContext();
         Map<String, Object> repos = databaseContext.getRepositoriesByName();
-        for(String repoName : repos.keySet())
+        for (String repoName : repos.keySet()) {
             singletonFactory.addSingleton(repoName, repos.get(repoName));
+        }
     }
 
     private EzyDatabaseContext newMongodbDatabaseContext() {
         return new EzyMongoDatabaseContextBuilder()
-                .properties(properties)
-                .mongoClient(newMongoClient())
-                .databaseName(databaseName)
-                .scan("com.tvd12.space_shooter.entity")
-                .scan("com.tvd12.space_shooter.model")
-                .scan("com.tvd12.space_shooter.repo")
-                .build();
+            .properties(properties)
+            .mongoClient(newMongoClient())
+            .databaseName(databaseName)
+            .scan("com.tvd12.space_shooter.entity")
+            .scan("com.tvd12.space_shooter.model")
+            .scan("com.tvd12.space_shooter.repo")
+            .build();
     }
 
     private MongoClient newMongoClient() {

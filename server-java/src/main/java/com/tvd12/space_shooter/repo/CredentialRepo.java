@@ -7,5 +7,5 @@ import com.tvd12.space_shooter.entity.GamePlayerId;
 
 @EzyRepository
 public interface CredentialRepo
-        extends EzyMongoRepository<GamePlayerId, Credential> {
+    extends EzyMongoRepository<GamePlayerId, Credential> {
 }

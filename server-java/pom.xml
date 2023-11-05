@@ -5,19 +5,20 @@
 	<parent>
 		<groupId>com.tvd12</groupId>
 		<artifactId>ezyfox</artifactId>
-		<version>1.0.5</version>
+		<version>1.0.6</version>
 	</parent>
 	<artifactId>space-shooter-server-java</artifactId>
 	<name>space-shooter-server-java</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<ezy.version>1.2.5</ezy.version>
+		<ezy.version>1.2.8</ezy.version>
+		<ezy.server.version>1.2.8.1</ezy.server.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.tvd12</groupId>
 			<artifactId>ezyfox-server-embedded</artifactId>
-			<version>${ezy.version}</version>
+			<version>${ezy.server.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.tvd12</groupId>
@@ -25,4 +26,35 @@
 			<version>${ezy.version}</version>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.1.2</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.puppycrawl.tools</groupId>
+						<artifactId>checkstyle</artifactId>
+						<version>8.42</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<consoleOutput>true</consoleOutput>
+					<violationSeverity>warning</violationSeverity>
+					<configLocation>checkstyle.xml</configLocation>
+				</configuration>
+				<executions>
+					<execution>
+						<id>verify</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
