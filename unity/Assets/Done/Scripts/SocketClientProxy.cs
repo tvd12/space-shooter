@@ -116,6 +116,8 @@ public class SocketClientProxy
         firstLogin = true;
         var config = EzyClientConfig.builder()
             .clientName(ZONE_NAME)
+            .enableSSL()
+            .enableDebug()
             .build();
         socketClient = new EzyUTClient(config);
         EzyClients.getInstance().addClient(socketClient);

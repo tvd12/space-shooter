@@ -2,6 +2,7 @@ package com.tvd12.space_shooter;
 
 import com.tvd12.ezyfox.bean.EzyBeanContextBuilder;
 import com.tvd12.ezyfoxserver.constant.EzyEventType;
+import com.tvd12.ezyfoxserver.constant.SslType;
 import com.tvd12.ezyfoxserver.context.EzyAppContext;
 import com.tvd12.ezyfoxserver.context.EzyPluginContext;
 import com.tvd12.ezyfoxserver.embedded.EzyEmbeddedServer;
@@ -34,8 +35,13 @@ public class SpaceShooterStartup {
             .application(appSettingBuilder.build())
             .plugin(pluginSettingBuilder.build());
 
+        EzySocketSettingBuilder socketSettingBuilder = new EzySocketSettingBuilder()
+            .active(true)
+            .sslActive(true)
+            .sslType(SslType.CUSTOMIZATION);
+
         EzyWebSocketSettingBuilder webSocketSettingBuilder = new EzyWebSocketSettingBuilder()
-            .active(false);
+            .active(true);
 
         EzyUdpSettingBuilder udpSettingBuilder = new EzyUdpSettingBuilder()
             .active(true);
@@ -50,6 +56,7 @@ public class SpaceShooterStartup {
 
         EzySimpleSettings settings = new EzySettingsBuilder()
             .zone(zoneSettingBuilder.build())
+            .socket(socketSettingBuilder.build())
             .websocket(webSocketSettingBuilder.build())
             .udp(udpSettingBuilder.build())
             .sessionManagement(sessionManagementSettingBuilder.build())
